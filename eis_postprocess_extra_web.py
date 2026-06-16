@@ -414,7 +414,7 @@ def find_eis_web_value(
             continue
         if employee_matches(employee, rec["assignee"], employee_alias_map) and project_matches(project, rec["project"], project_alias_map):
             return rec["value"], rec["col"]
-    return "0", None
+    return None, None
 
 
 def update_eis_web(
@@ -438,12 +438,12 @@ def update_eis_web(
         if not employee and not project:
             continue
         if not employee or not project:
-            ws.cell(row, EIS_WEB_OUTPUT_COL).value = "0"
+            ws.cell(row, EIS_WEB_OUTPUT_COL).value = None
             updated += 1
             continue
 
         value, _matched_col = find_eis_web_value(employee, project, records, project_alias_map, employee_alias_map)
-        ws.cell(row, EIS_WEB_OUTPUT_COL).value = value
+        ws.cell(row, EIS_WEB_OUTPUT_COL).value = value or None
         updated += 1
 
     return updated

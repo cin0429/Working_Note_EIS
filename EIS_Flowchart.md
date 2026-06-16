@@ -68,8 +68,9 @@ EIS_calculated.xlsx
   ▸ col A ← EIS row 1 的 Project 名稱      比對員工是否在 EIS row 20
   ▸ col C ← EIS row 19 的值               且 Project 是否在 EIS row 1
               （空白 → 填 0）                       │
-                                             ├─► 找到 → col E ← EIS row 19 的值
-                                             └─► 找不到 → col E ← 0
+                                             ├─► 找到，值 > 0 → col E ← EIS row 19 的值
+                                             ├─► 找到，值為 0 或空白 → col E ← 空白
+                                             └─► 找不到 → col E ← 空白
          │                                         │
          └──────────────┬──────────────────────────┘
                         ▼
